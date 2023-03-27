@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfChatApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfChatApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="300">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="116,34,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="120" Name="IpAddressBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="116,68,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="120" Name="PortAddressBox"/>
+        <Label Content="Address IP" HorizontalAlignment="Left" Margin="36,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Port" HorizontalAlignment="Left" Margin="70,68,0,0" VerticalAlignment="Top"/>
+        <Button Content="Start hosting" HorizontalAlignment="Center" Margin="0,127,0,0" VerticalAlignment="Top" Click="Start_Connection"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Name="IpAddressWarningBox"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Name="PortAddressWarningBox"/>
+    </Grid>
+</Window>

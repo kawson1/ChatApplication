@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfChatApp.Windows.Started"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfChatApp.Windows"
+        mc:Ignorable="d"
+        Title="Started" Height="450" Width="800">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="129,32,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="120" Name="DestAddressIp"/>
+        <Label Content="Adress IP" HorizontalAlignment="Left" Margin="65,28,0,0" VerticalAlignment="Top"/>
+        <Label Content="Port" HorizontalAlignment="Left" Margin="86,66,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="129,74,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="120" Name="DestAddressPort"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="165,120,0,0" VerticalAlignment="Top" Click="Connect_Click"/>
+        <Grid Name="ChatMessages" Margin="331,20,10,10" Background="#FFEAEAEA">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" x:Name="ChatMessageScrollViewer" Margin="5" ScrollChanged="ChatMessageScrollViewer_ScrollChanged" >
+                <TextBox x:Name="ChatMessageBox" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextChanged="ChatMessageBox_TextChanged" FontSize="14" 
+                         IsReadOnly="True"/>
+            </ScrollViewer>
+            <TextBox x:Name="ChatMessageInputBox" Grid.Row="1" TextWrapping="Wrap" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="EnterDownHandler"/>
+        </Grid>
+    </Grid>
+</Window>
