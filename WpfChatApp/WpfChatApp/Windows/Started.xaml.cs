@@ -22,37 +22,36 @@ namespace WpfChatApp.Windows
     public partial class Started : Window
     {
         readonly ConnectionHandler connectionHandler;
-        public Started(ConnectionHandler _connHandler)
+        readonly string username;
+
+        public Started(ConnectionHandler _connHandler, string _username)
         {
+            username = _username;
             connectionHandler = _connHandler;
             InitializeComponent();
         }
 
         public async void MainFunction()
         {
-            connectionHandler.MessageRecived += OnMessageRecived;
-            //connectionHandler.x = new ConnectionHandler.MessageRecived(OnMessageRecived);
-            OnMessageRecived(null, "Scanning...");
-
-            //await Task.Run(() => StartConnectionScanAsync());
+            connectionHandler.MessageRecived += DisplayMessage;
+            DisplayMessage(null, "Scanning...");
             StartConnectionScanAsync();
-            OnMessageRecived(null, "W OCZEKIWANIU");
         }
 
         public async void StartConnectionScanAsync()
         {
             if (await connectionHandler.StartConnectionScanAsync() == 1)
             {
-                connectionHandler.ForwardMessage("Someone connected...");
+                DisplayMessage(null, "Someone connected...");
                 Task.Run(() => { connectionHandler.StartReciving(); });
+                ChangeTextboxState();
             }
         }
 
-        public void OnMessageRecived(object sender, string message)
+        public void DisplayMessage(object sender, string message)
         {
-            ChatMessageBox.AppendText(message);
+            ChatMessageBox.AppendText(message+"\n");
             ChatMessageBox.ScrollToEnd();
-
         }
 
         private bool _autoScroll = true;
@@ -75,7 +74,8 @@ namespace WpfChatApp.Windows
             try
             {
                 connectionHandler.ConnectTo(IPAddress.Parse(DestAddressIp.Text), Int32.Parse(DestAddressPort.Text));
-                OnMessageRecived(sender, "Connected!");
+                DisplayMessage(sender, "Connected!");
+                ChangeTextboxState();
                 Task.Run(() => { connectionHandler.StartReciving(); });
             }
             catch
@@ -84,20 +84,20 @@ namespace WpfChatApp.Windows
             }
         }
 
-        private void ChatMessageBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void EnterDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                string message = ChatMessageInputBox.Text + "\n";
-                ChatMessageBox.AppendText(message);
+                string message = $"{username}: {ChatMessageInputBox.Text}";
+                DisplayMessage(sender, message);
                 connectionHandler.Send(message);
                 ChatMessageInputBox.Clear();
             }
+        }
+
+        private void ChangeTextboxState()
+        {
+            ChatMessageInputBox.IsEnabled = !ChatMessageInputBox.IsEnabled;
         }
     }
 }

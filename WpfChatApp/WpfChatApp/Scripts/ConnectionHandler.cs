@@ -19,10 +19,9 @@ namespace WpfChatApp.Scripts
         Socket hostingSocket;
         Socket connectionSocket;
 
-        public event EventHandler<string> MessageRecived; 
-/*        public delegate void MessageRecived(object sender, string message);
-
-        public MessageRecived x;*/
+        public event EventHandler<string> MessageRecived;
+        
+        bool isConnected = false;
 
         public void StartHosting(IPAddress _ipAddress, Int32 _port)
         {
@@ -47,20 +46,26 @@ namespace WpfChatApp.Scripts
         }
 
         // RETURN 1 IF CONNECTED
-        public async Task<int> StartConnectionScanAsync()
+        public Task<int> StartConnectionScanAsync()
         {
-            /*return await Task.Run(() =>
+/*            return await Task.Run(() =>
             {
                 hostingSocket.Listen();
                 connectionSocket = hostingSocket.Accept();
+                isConnected = true;
                 return 1;
             });*/
 
-            hostingSocket.Listen();
-            connectionSocket = hostingSocket.Accept();
-            return 1;
+            return Task.Run(() =>
+            {
+                hostingSocket.Listen();
+                connectionSocket = hostingSocket.Accept();
+                isConnected = true;
+                return 1;
+            });
         }
 
+        // TODO: If connected, we have to block possibility for connection to our socket
         public int ConnectTo(IPAddress _ipAddress, Int32 _port)
         {
             // IF SERVER AVAILABLE, PUT ipAddress INSTEAD localhost
@@ -69,6 +74,7 @@ namespace WpfChatApp.Scripts
             try
             {
                 connectionSocket.Connect(host.AddressList[0], _port);
+                isConnected = true;
                 return 1;
             }
             catch (Exception ex) 
@@ -80,7 +86,6 @@ namespace WpfChatApp.Scripts
         public void ForwardMessage(string message)
         {
             Application.Current.Dispatcher.BeginInvoke(MessageRecived, null, message);
-           
         }
 
         public void StartReciving()

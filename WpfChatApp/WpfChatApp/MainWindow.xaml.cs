@@ -32,12 +32,17 @@ namespace WpfChatApp
 
         private async void Start_Connection(object sender, RoutedEventArgs e)
         {
+            if(UsernameInputBox.Text == "")
+            {
+                MessageBox.Show("Bad username", "Bad username", MessageBoxButton.OKCancel);
+                return;
+            }
 
             try
             {
                 connHandler = new ConnectionHandler();
                 connHandler.StartHosting(IPAddress.Parse(IpAddressBox.Text), Int32.Parse(PortAddressBox.Text));
-                Started startedWindow = new Started(connHandler);
+                Started startedWindow = new Started(connHandler, UsernameInputBox.Text);
                 startedWindow.Show();
                 this.Hide();
                 startedWindow.Closed += (s, e) => { this.Show(); };

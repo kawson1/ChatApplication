@@ -18,10 +18,10 @@
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <ScrollViewer Grid.Row="0" x:Name="ChatMessageScrollViewer" Margin="5" ScrollChanged="ChatMessageScrollViewer_ScrollChanged" >
-                <TextBox x:Name="ChatMessageBox" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextChanged="ChatMessageBox_TextChanged" FontSize="14" 
+                <TextBox x:Name="ChatMessageBox" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" 
                          IsReadOnly="True"/>
             </ScrollViewer>
-            <TextBox x:Name="ChatMessageInputBox" Grid.Row="1" TextWrapping="Wrap" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="EnterDownHandler"/>
+            <TextBox x:Name="ChatMessageInputBox" Grid.Row="1" TextWrapping="Wrap" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" KeyDown="EnterDownHandler" IsEnabled="False"/>
         </Grid>
     </Grid>
 </Window>
