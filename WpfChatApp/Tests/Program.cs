@@ -1,23 +1,24 @@
 ﻿class Program
 {
+    static bool loop = true;
+    public static Task WaitingLoop()
+    {
+        return Task.Run(() =>
+        {
+            while (loop)
+            {
+                Console.WriteLine("Loop");
+                Thread.Sleep(1000);
+            }
+        });
+    }
+
     static void Main(string[] args)
     {
-        test();
+        WaitingLoop();
+        Console.WriteLine("Uruchomilem Waiting loop");
         Console.ReadKey();
-    }
-
-    static async Task test()
-    {
-        if(await Tt() == 1)
-        {
-            Console.WriteLine("If koniec");
-        }
-        Console.WriteLine("Po ifie");
-    }
-
-    static async Task<int> Tt()
-    {
-        await Task.Delay(2000);
-        return 1;
+        loop = false;
+        Console.ReadKey();
     }
 }

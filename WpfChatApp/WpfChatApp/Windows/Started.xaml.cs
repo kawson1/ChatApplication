@@ -76,12 +76,23 @@ namespace WpfChatApp.Windows
                 connectionHandler.ConnectTo(IPAddress.Parse(DestAddressIp.Text), Int32.Parse(DestAddressPort.Text));
                 DisplayMessage(sender, "Connected!");
                 ChangeTextboxState();
+                ChangeConnectButtonsState();
                 Task.Run(() => { connectionHandler.StartReciving(); });
             }
             catch
             {
                 MessageBox.Show("Couldn't connect to specific addres:port", "Connection error", MessageBoxButton.OKCancel);
             }
+        }
+        private void Disconnect_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!connectionHandler.DisconnectClient())
+            {
+                DisplayMessage(sender, "Couldn't disconnect!");
+                return;
+            }
+            ChangeConnectButtonsState();
+            ChangeTextboxState();
         }
 
         private void EnterDownHandler(object sender, KeyEventArgs e)
@@ -98,6 +109,11 @@ namespace WpfChatApp.Windows
         private void ChangeTextboxState()
         {
             ChatMessageInputBox.IsEnabled = !ChatMessageInputBox.IsEnabled;
+        }
+        private void ChangeConnectButtonsState()
+        {
+            Connect_Button.IsEnabled = !Connect_Button.IsEnabled;
+            Disconnect_Button.IsEnabled = !Disconnect_Button.IsEnabled;
         }
     }
 }

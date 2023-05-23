@@ -83,6 +83,20 @@ namespace WpfChatApp.Scripts
             }
         }
 
+        public bool DisconnectClient()
+        {
+            try
+            {
+                connectionSocket.Shutdown(SocketShutdown.Both);
+                connectionSocket.Disconnect(false);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public void ForwardMessage(string message)
         {
             Application.Current.Dispatcher.BeginInvoke(MessageRecived, null, message);
@@ -92,7 +106,7 @@ namespace WpfChatApp.Scripts
         {
             int byteCount = 0;
             byte[] bytes = new byte[256];
-            while (true)
+            while (connectionSocket.Connected)
             {
                 /*                if (connectionSocket.Connected)
                                 {

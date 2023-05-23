@@ -11,7 +11,8 @@
         <Label Content="Adress IP" HorizontalAlignment="Left" Margin="65,28,0,0" VerticalAlignment="Top"/>
         <Label Content="Port" HorizontalAlignment="Left" Margin="86,66,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="129,74,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="120" Name="DestAddressPort"/>
-        <Button Content="Connect" HorizontalAlignment="Left" Margin="165,120,0,0" VerticalAlignment="Top" Click="Connect_Click"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="165,120,0,0" VerticalAlignment="Top" Click="Connect_Click" x:Name="Connect_Button"/>
+        <Button IsEnabled="False" Content="Disconnect" HorizontalAlignment="Left" Margin="158,163,0,0" VerticalAlignment="Top" Click="Disconnect_Button_Click" x:Name="Disconnect_Button" RenderTransformOrigin="0.482,2.798"/>
         <Grid Name="ChatMessages" Margin="331,20,10,10" Background="#FFEAEAEA">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
