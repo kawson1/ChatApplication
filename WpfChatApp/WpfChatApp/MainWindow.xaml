@@ -7,14 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="300">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="116,34,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="120" Name="IpAddressBox"/>
-        <TextBox HorizontalAlignment="Left" Margin="116,68,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="120" Name="PortAddressBox"/>
-        <Label Content="Address IP" HorizontalAlignment="Left" Margin="36,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Port" HorizontalAlignment="Left" Margin="70,61,0,0" VerticalAlignment="Top"/>
-        <Button Content="Start hosting" HorizontalAlignment="Left" Margin="116,148,0,0" VerticalAlignment="Top" Click="Start_Connection"/>
+        <TextBox HorizontalAlignment="Left" Margin="116,20,0,0" TextWrapping="Wrap" Text="192.168.0.1" VerticalAlignment="Top" Width="120" Name="IpAddressBox"/>
+        <TextBox HorizontalAlignment="Left" Margin="116,54,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="120" Name="PortAddressBox"/>
+        <Label Content="Address IP" HorizontalAlignment="Left" Margin="36,16,0,0" VerticalAlignment="Top"/>
+        <Label Content="Port" HorizontalAlignment="Left" Margin="70,47,0,0" VerticalAlignment="Top"/>
+        <Button Content="Start hosting" HorizontalAlignment="Left" Margin="165,146,0,0" VerticalAlignment="Top" Click="Start_Connection"/>
         <TextBlock HorizontalAlignment="Left" Margin="268,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Name="IpAddressWarningBox"/>
         <TextBlock HorizontalAlignment="Left" Margin="268,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Name="PortAddressWarningBox"/>
-        <TextBox x:Name="UsernameInputBox" HorizontalAlignment="Left" Margin="115,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="38,95,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UsernameInputBox" HorizontalAlignment="Left" Margin="115,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="38,81,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="42,112,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PasswordInputBox" HorizontalAlignment="Left" Margin="115,116,0,0" VerticalAlignment="Top" Width="120" />
+        <Button Content="Choose keys folder" HorizontalAlignment="Left" Margin="33,146,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>
