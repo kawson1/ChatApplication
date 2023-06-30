@@ -12,19 +12,19 @@ Cryptosystem methods for safe data transfer:
 Application allows to send text message and files (any size). <br>
 
 Initial window<br>
-![Alt text](image.png)
+![Alt text](img/image.png)
 
 Scanning state, waiting for incomming connetions<br>
-![Alt text](image-1.png)
+![Alt text](img/image-1.png)
 
 Chatting<br>
-![Alt text](image-2.png)
+![Alt text](img/image-2.png)
 
 Incoming file acceptation dialog<br>
-![Alt text](image-3.png)
+![Alt text](img/image-3.png)
 
 Downloading file progress<br>
-![Alt text](image-4.png)
+![Alt text](img/image-4.png)
 
 
 
